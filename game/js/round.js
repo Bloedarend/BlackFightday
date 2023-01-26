@@ -52,9 +52,6 @@ class Round {
     }
 
     endGame() {
-        // Stop listening for key presses within the canvas.
-        removeEventListeners()
-
         // Stop the game loop.
         this.running = false
         this.gameEnd = true

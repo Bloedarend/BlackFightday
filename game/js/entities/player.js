@@ -171,9 +171,12 @@ class Player extends Entity {
             this.isAttacking = false
             this.isStunned = false
 
-            this.velocity = {
-                x: 0,
-                y: 0
+            // Stop player dash if the opponent was attacked.
+            if (this.opponent && this.opponent.isAttacked) {
+                this.velocity = {
+                    x: 0,
+                    y: 0
+                }
             }
         }, this.attackCooldown)
     }
