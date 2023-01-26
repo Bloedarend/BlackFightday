@@ -43,6 +43,24 @@ class Item extends Entity {
         this.#handleCollection()
         this.#handleDeath()
     }
+    
+    /**
+     * Preload all item state images.
+     */
+
+    preload() {
+        addImage(this.name, "new", this.images)
+        addImage(this.name, "damaged", this.images)
+        addImage(this.name, "broken", this.images)
+
+        function addImage(name, state, images) {
+            const image = new Image()
+            const imageSrc = `./../media/images/items/${name}-${state}.png`
+            
+            image.src = imageSrc
+            images.push(image)
+        }
+    }
 
     /**
      * Spawn the item entity on a random location on the map.

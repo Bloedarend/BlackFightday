@@ -110,6 +110,7 @@ class Round {
                 }
 
                 // Spawn the item onto the map.
+                item.preload()
                 item.spawn()
                 this.itemIsSpawning = false
             }, Math.floor(Math.random() * 6 + 4) * 1000) // Item will spawn randomly between 4 and 10 seconds.
@@ -520,7 +521,7 @@ class Round {
             position: position,
             worth: 2000,
             weight: 3,
-            fragility: 1,
+            fragility: 0.5,
             isFragile: true
         }
         
