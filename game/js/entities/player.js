@@ -433,6 +433,8 @@ class Player extends Entity {
     }
 
     #handleStates() {
+        if (!round.running) return
+
         // Reverse the player image depending on the direction it is facing.
         const direction = this.isDrunk ? this.direction * -1 : this.direction
         if (direction < 0) {
