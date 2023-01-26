@@ -106,6 +106,25 @@ class Player extends Entity {
     }
 
     /**
+     * Preload all player state images.
+     */
+
+    preload() {
+        addImage(this.team, "idle", this.images)
+        addImage(this.team, "walking", this.images)
+        addImage(this.team, "attacking", this.images)
+        addImage(this.team, "jumping", this.images)
+
+        function addImage(team, state, images) {
+            const image = new Image()
+            const imageSrc = `./../media/images/characters/player-${team}-${state}.png`
+            
+            image.src = imageSrc
+            images.push(image)
+        }
+    }
+
+    /**
      * Bring the player back to their spawn location.
      */
 

@@ -351,7 +351,7 @@ class Round {
 
     #initialize() {
         // Initialize maps
-        const map1 = new Map({ 
+        const map1 = new GameMap({ 
             name: "walmart", 
             position1: { 
                 x: 180, 
@@ -370,7 +370,7 @@ class Round {
             ]
         })
         
-        const map2 = new Map({
+        const map2 = new GameMap({
             name: "microcenter",
             position1: { 
                 x: 180, 
@@ -389,7 +389,7 @@ class Round {
             ]
         })
         
-        const map3 = new Map({
+        const map3 = new GameMap({
             name: "target",
             position1: { 
                 x: 180, 
@@ -432,6 +432,9 @@ class Round {
             direction: -1, 
             controls: settings.controls.player2,
         })
+
+        player1.preload()
+        player2.preload()
 
         this.players.push(player1)
         this.players.push(player2)

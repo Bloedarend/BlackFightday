@@ -1,4 +1,4 @@
-class Map extends Sprite {
+class GameMap extends Sprite {
 
     constructor({ 
         name, 
