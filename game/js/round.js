@@ -43,6 +43,8 @@ class Round {
         this.loopGame()
         this.animate()
 
+        ctx.drawImage(new Image("./../media/images/characters/player-red-walking.png"), -1000, -1000)
+
         // Start the countdown and prevent player movement/combat
         setTimeout(() => {
             this.players.forEach(player => {
