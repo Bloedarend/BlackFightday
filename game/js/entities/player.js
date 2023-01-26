@@ -139,8 +139,8 @@ class Player extends Entity {
         // Balance the power.
         if (power < 500) {
             power = 500
-        } else if (power > 1500) {
-            power = 1500
+        } else if (power > 2000) {
+            power = 2000
         }
 
         // Determine the attax hitbox.

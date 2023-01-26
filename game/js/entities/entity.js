@@ -120,6 +120,8 @@ class Entity extends Sprite {
                 if (!this.isOnGround) this.hasLanded = true
 
                 this.isOnGround = true
+                this.isOnWall.left = false
+                this.isOnWall.right = false
             } else {
                 this.isOnGround = false
             }
@@ -131,11 +133,12 @@ class Entity extends Sprite {
                 return
             }
 
-            // We don"t want the entity to be teleported if they are on top of a platform.
+            // We don't want the entity to be teleported if they are on top of a platform.
             if (this.isOnGround) return
 
             // Entity moved into platform from the bottom.
             if (fromBottom) {
+                this.velocity.y = 0
                 this.position.y = platform.position.y + platform.height
             }
 
