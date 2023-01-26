@@ -33,11 +33,11 @@ class Item extends Entity {
     }
 
     /**
-     * Update the item"s properties
+     * Update the item's properties
      */
 
     update() {
-        this.#handlePosition()
+        this.#handlePosition() // super.update() is called here, unless the item is picked up by a player.
         this.#handleLandings()
         this.handleStates()
         this.#handleCollection()
@@ -162,6 +162,9 @@ class Item extends Entity {
                 // Gravity will now be applied and the item will no longer follow the player.
                 super.update()
             }
+        } else {
+            // Ensure that the parent is updated in case the item has no player.
+            super.update()
         }
     }
 

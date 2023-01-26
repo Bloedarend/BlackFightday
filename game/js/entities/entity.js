@@ -37,7 +37,7 @@ class Entity extends Sprite {
     }
 
     /**
-     * Update the entity"s properties
+     * Update the entity's properties
      */
 
     update() {
@@ -52,7 +52,7 @@ class Entity extends Sprite {
 
 
     /**
-     * Check if this entity"s hitbox is colliding with another object"s hitbox.
+     * Check if this entity"s hitbox is colliding with another object's hitbox.
      * 
      * @param {Object} object The object to compare hitboxes with.
      * @returns {Boolean} Whether both hitboxes collide with eachother.
