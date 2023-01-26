@@ -26,6 +26,9 @@ class Sprite {
      */
 
     draw(context) {
+        // Update the sprite image.
+        this.image.src = this.imageSrc
+        
         if (this.isReversed) {
             // Reverse image.
             context.translate(this.position.x + this.width, this.position.y)
@@ -42,10 +45,7 @@ class Sprite {
      * Update the sprite's properties
      */
 
-    update() {
-        // Update the sprite image.
-        this.image.src = this.imageSrc
-        
+    update() {        
         // Reset the frame if it reached past the max frames.
         const maxFrames = Math.floor(this.image.width / this.width) - 1   
         if (maxFrames === 0) {
