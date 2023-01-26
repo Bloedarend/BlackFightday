@@ -12,9 +12,7 @@ class Sprite {
         this.position = position
 
         this.image = new Image()
-        this.oldImage = new Image()
         this.imageSrc = imageSrc
-        this.oldImageSrc = imageSrc
         this.frame = 0
         this.frames = 0
         this.frameRate = 4
@@ -32,6 +30,12 @@ class Sprite {
         // Update the sprite image.
         this.image.src = this.imageSrc
         
+        // Reset the frame if it reached past the max frames.
+        const maxFrames = Math.floor(this.image.width / this.width) - 1
+        if (maxFrames === 0) {
+            this.frame = 0
+        } 
+
         if (this.isReversed) {
             // Reverse image.
             context.translate(this.position.x + this.width, this.position.y)
@@ -48,23 +52,19 @@ class Sprite {
      * Update the sprite's properties
      */
 
-    update() {        
-        // Reset the frame if it reached past the max frames.
-        // const maxFrames = Math.floor(this.image.width / this.width) - 1   
-        // if (maxFrames === 0) {
-        //     this.frame = 0
-        // } 
+    update() {
+        const maxFrames = Math.floor(this.image.width / this.width) - 1
+        
+        // Increment the frame to animate the spritesheet.     
+        if (!(this.frames % (60 / this.frameRate))) {
+            if (this.frame < maxFrames) {
+                this.frame++
+            } else {
+                this.frame = 0
+            }
+        }
 
-        // // Increment the frame to animate the spritesheet.     
-        // if (!(this.frames % (60 / this.frameRate))) {
-        //     if (this.frame < maxFrames) {
-        //         this.frame++
-        //     } else {
-        //         this.frame = 0
-        //     }
-        // }
-
-        // this.frames++
+        this.frames++
     }
 
 }
