@@ -229,7 +229,7 @@ class Player extends Entity {
     }
 
     #walk() {
-        if (this.isStunned || this.isRespawning || this.isAttacking) return
+        if (this.isStunned || this.isRespawning) return
 
         // Stop player movement when the player is charging a heavy attack on the ground.
         if (this.inputs.attack.pressed && Date.now() - this.inputs.attack.timestamp > this.heavyAttackTimer && this.isOnGround) {
