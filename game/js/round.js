@@ -72,8 +72,11 @@ class Round {
         })
 
         function drawImage(player, state) {
-            ctx.drawImage(new Image(`./../media/images/characters/player-${player.team}-${state}.png`))
+            player.imageSrc = `./../media/images/characters/player-${player.team}-${state}.png`
+            player.draw(ctx)
         }
+
+        this.map.draw(ctx)
     }
 
     loopGame() {        
