@@ -98,6 +98,9 @@ class Entity extends Sprite {
 
     #handlePlatformCollision() {
         const platform = this.platform
+        
+        this.isOnWall.left = false
+        this.isOnWall.right = false
 
         if (platform) {
             // Set the entity as not on ground when it is no longer on its platform.
@@ -120,8 +123,6 @@ class Entity extends Sprite {
                 if (!this.isOnGround) this.hasLanded = true
 
                 this.isOnGround = true
-                this.isOnWall.left = false
-                this.isOnWall.right = false
             } else {
                 this.isOnGround = false
             }
