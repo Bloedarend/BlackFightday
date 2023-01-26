@@ -37,9 +37,6 @@ class Round {
         // Start listening for key presses within the window.
         addEventListeners() 
 
-        // Pre-load player images.
-        this.#loadImages()
-
         // Start the game loop.
         this.running = true
         this.timestamp = Date.now()
@@ -61,22 +58,6 @@ class Round {
         // Stop the game loop.
         this.running = false
         this.gameEnd = true
-    }
-
-    #loadImages() {
-        this.players.forEach(player => {
-            drawImage(player, "idle")
-            drawImage(player, "walking")
-            drawImage(player, "jumping")
-            drawImage(player, "attacking")
-        })
-
-        function drawImage(player, state) {
-            player.imageSrc = `./../media/images/characters/player-${player.team}-${state}.png`
-            player.draw(ctx)
-        }
-
-        this.map.draw(ctx)
     }
 
     loopGame() {        
