@@ -34,9 +34,10 @@ class Player extends Entity {
 
         this.isJumping = false
         this.isWalking = false
+        this.isThrowing = false
         this.isAttacking = false
         this.isAttacked = false
-        this.isStunned = false
+        this.isStunned = true
         this.isOnPickupCooldown = false
 
         this.speedBoost = 1
@@ -72,7 +73,7 @@ class Player extends Entity {
             y: 13.8
         }
         
-        this.attackRange = width
+        this.attackRange = width / 2
         this.attackCooldown = 300
         this.knockback = 4
         this.knockbackDirection = 0
@@ -376,9 +377,15 @@ class Player extends Entity {
         if (this.item) {
             // Throw the item
             if (this.inputs.attack.pressed && !this.isStunned) {
+                this.isThrowing = true
                 this.isOnPickupCooldown = true // Prevent player from immediately picking up another item (and potentially throwing it at the same time).
                 this.item.throw()
                 this.item = null
+
+                // Cancal throwing animation.
+                setTimeout(() => {
+                    this.isThrowing = false
+                }, 250)
 
                 // Allow player to pickup items and attack again.
                 setTimeout(() => {
@@ -435,7 +442,7 @@ class Player extends Entity {
         }
 
         // Update the state of the image, to fit the action the player is performing.
-        if (this.isAttacking) {
+        if (this.isAttacking || this.isThrowing) {
             this.state = "attacking"
         } else if (this.jumps >= 1) {
             this.state = "jumping"

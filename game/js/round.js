@@ -12,6 +12,7 @@ class Round {
         this.items = new Set()
         this.carts = new Set()
 
+        this.countdown = 4000
         this.tickrate = 60
         this.timestamp
 
@@ -42,13 +43,15 @@ class Round {
         this.loopGame()
         this.animate()
 
+        // Start the countdown and prevent player movement/combat
         setTimeout(() => {
             this.players.forEach(player => {
+                player.isStunned = false
                 player.canAttack = true
             })
             this.gameStart = true
             this.timestamp = Date.now()
-        }, 4000);
+        }, this.countdown);
     }
 
     endGame() {
@@ -121,9 +124,6 @@ class Round {
             this.displayWinner()   
             return
         }
-        
-        // Request a new animation frame to draw on.
-        window.requestAnimationFrame(() => { this.animate() })
 
         // Clear the canvas.
         ctx.clearRect(-1, -1, canvas.width + 1, canvas.height + 1)
@@ -160,6 +160,9 @@ class Round {
         // Draw the HUDs at the side of the main canvas.
         this.drawHud(ctxRed, this.players[0])
         this.drawHud(ctxBlue, this.players[1])
+        
+        // Request a new animation frame to draw on.
+        window.requestAnimationFrame(() => { this.animate() })
     }
 
     displayWinner() {
