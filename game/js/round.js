@@ -37,13 +37,14 @@ class Round {
         // Start listening for key presses within the window.
         addEventListeners() 
 
+        // Pre-load player images.
+        this.#loadImages()
+
         // Start the game loop.
         this.running = true
         this.timestamp = Date.now()
         this.loopGame()
         this.animate()
-
-        ctx.drawImage(new Image("./../media/images/characters/player-red-walking.png"), -1000, -1000)
 
         // Start the countdown and prevent player movement/combat
         setTimeout(() => {
@@ -60,6 +61,19 @@ class Round {
         // Stop the game loop.
         this.running = false
         this.gameEnd = true
+    }
+
+    #loadImages() {
+        this.players.forEach(player => {
+            drawImage(player, "idle")
+            drawImage(player, "walking")
+            drawImage(player, "jumping")
+            drawImage(player, "attacking")
+        })
+
+        function drawImage(player, state) {
+            ctx.drawImage(new Image(`./../media/images/characters/player-${player.team}-${state}.png`))
+        }
     }
 
     loopGame() {        
