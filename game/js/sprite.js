@@ -6,7 +6,7 @@ class Sprite {
         position, 
         imageSrc 
     }) {
-        this.image
+        this.image = new Image()
         this.isReversed = false
         this.width = width
         this.height = height
@@ -15,6 +15,8 @@ class Sprite {
         this.frame = 0
         this.frames = 0
         this.frameRate = 4
+
+        this.image.src = imageSrc
     }
 
     /**
@@ -41,6 +43,10 @@ class Sprite {
      */
 
     update() {
+        // Update the sprite image.
+        this.image = new Image()
+        this.image.src = this.imageSrc
+        
         // Reset the frame if it reached past the max frames.
         const maxFrames = Math.floor(this.image.width / this.width) - 1   
         if (maxFrames === 0) {
@@ -57,10 +63,6 @@ class Sprite {
         }
 
         this.frames++
-        
-        // Update the sprite image.
-        this.image = new Image()
-        this.image.src = this.imageSrc
     }
 
 }
