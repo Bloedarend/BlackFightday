@@ -44,7 +44,6 @@ class Sprite {
 
     update() {
         // Update the sprite image.
-        this.image = new Image()
         this.image.src = this.imageSrc
         
         // Reset the frame if it reached past the max frames.
