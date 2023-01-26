@@ -24,17 +24,14 @@ class Sprite {
      */
 
     draw(context) {
-        // Update the sprite image.
-        this.image = new Image()
-        this.image.src = this.imageSrc
-
-        // Reverse image.
         if (this.isReversed) {
+            // Reverse image.
             context.translate(this.position.x + this.width, this.position.y)
             context.scale(-1, 1)
             context.drawImage(this.image, this.frame * this.width, 0, this.width, this.height, 0, 0, this.width, this.height)
             context.setTransform(1, 0, 0, 1, 0, 0)
         } else {
+            // Draw regular image.
             context.drawImage(this.image, this.frame * this.width, 0, this.width, this.height, this.position.x, this.position.y, this.width, this.height)
         }
     }
@@ -60,6 +57,10 @@ class Sprite {
         }
 
         this.frames++
+        
+        // Update the sprite image.
+        this.image = new Image()
+        this.image.src = this.imageSrc
     }
 
 }
